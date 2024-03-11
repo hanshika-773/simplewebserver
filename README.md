@@ -1,5 +1,5 @@
 # EX01 Developing a Simple Webserver
-## Date:
+## Date:11.03.24
 
 ## AIM:
 To develop a simple webserver to serve html pages.
@@ -22,26 +22,36 @@ Testing the webserver.
 
 ## PROGRAM:
 
+```
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 content = """
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Webserver</title>
+<title>My webserver</title>
 </head>
 <body>
-    <h1>Top 5 Revenue Companies</h1>
-    <ol>
-        <li>Apple</li>
-        <li>Google</li>
-        <li>Amazon</li>
-        <li>Samsung</li>
-        <li>TATA</li>
-    </ol>
+<h1><u>Languages used iun Web Development</u><h1>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>Bootstrap</li>
 </body>
 </html>
+"""
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',80)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
+httpd.serve_forever()
 """
 class myhandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -55,10 +65,13 @@ httpd = HTTPServer(server_address,myhandler)
 print("my webserver is running...")
 httpd.serve_forever()
 
+```
 
 ## OUTPUT:
-![image](https://github.com/hanshika-773/simplewebserver/assets/153576501/b8150cde-aad7-440e-bf19-91c979bb2907)
-![image-1](https://github.com/hanshika-773/simplewebserver/assets/153576501/ccd23de4-c543-4366-b053-2d24a5ae1a01)
+![out1](https://github.com/hanshika-773/simplewebserver/assets/153576501/474d69d8-47f2-43e5-9652-efa10ca45984)
+
+![out2](https://github.com/hanshika-773/simplewebserver/assets/153576501/ee9c2fdc-919f-4df7-8a3d-3679ca8385d3)
+
 
 
 ## RESULT:
