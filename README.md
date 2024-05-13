@@ -70,14 +70,10 @@ Testing the webserver.
 </html>
 ```
 
-
-
 ## OUTPUT:
-![Screenshot 2024-03-22 134025](https://github.com/hanshika-773/simplewebserver/assets/153576501/118fa946-2153-4e8a-bd3a-883cec16bb02)
+![alt text](<Screenshot 2024-05-13 090601.png>)
 
-
-
-
+![alt text](<Screenshot 2024-05-13 090706.png>)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
