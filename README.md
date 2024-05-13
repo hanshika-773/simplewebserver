@@ -21,7 +21,12 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
+
+## WEB.py
 ```
+from http.server import HTTPServer,BaseHTTPRequestHandler
+
+content="""
 <!doctype html>
 <html>
 <head>
@@ -31,43 +36,58 @@ Testing the webserver.
 <h1>Top Five Revenue from Companies</h1>
 <table border=2>
 <tr>
-<th> Company Name </th>
-<th> Revenue </th>
-<th> Financial Year </th>
+<th> Company Name</th>
+<th> Revenue</th>
+<th> Financial Year</th>
 </tr>
 
 <tr>
-<td> Microsoft </td>
-<td> 86$ </td>
-<td> 2014 </td>
+<td> Micro Soft</td>
+<td> $86.6</td>
+<td> 2014</td>
 </tr>
-
 <tr>
-<td> Oracle </td>
-<td> 37$ </td>
-<td> 2013 </td>
+<td> Oracle</td>
+<td> $37</td>
+<td> 2013</td>
 </tr>
-
 <tr>
-<td> SAP </td>
-<td> 20$ </td>
-<td> 2013 </td>
+<td> SAP</td>
+<td> 420</td>
+<td> 2013</td>
 </tr>
-
 <tr>
-<td> VMware </td>
-<td> 5.2$ </td>
-<td> 2013 </td>
+<td> VMware</td>
+<td> $5.2</td>
+<td> 2013</td>
 </tr>
-
 <tr>
-<td> CA Technologies </td>
-<td> 4.7$ </td>
-<td> 2013 </td>
+<td> CA Technoligies</td>
+<td> $4.7/td>
+<td> 2013</td>
 </tr>
-
+<tr>
+<td> Micro Soft</td>
+<td> $86.6</td>
+<td> 2014</td>
+</tr>
+</table>
 </body>
 </html>
+"""
+
+class MyServer(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("Get request received...")
+        self.send_response(200) 
+        self.send_header("content-type", "text/html")       
+        self.end_headers()
+        self.wfile.write(content.encode())
+
+print("This is my webserver") 
+server_address =('',8000)
+httpd = HTTPServer(server_address,MyServer)
+httpd.serve_forever()
 ```
 
 ## OUTPUT:
